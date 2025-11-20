@@ -1,242 +1,243 @@
-# 113 �Ǧ~�פu���� �q�����@¾�� �ĤG�� PC �ݵ{��
+# 113 學年度工科賽 電腦修護職類 第二站 PC 端程式
+<img width="815" height="559" alt="image" src="https://github.com/user-attachments/assets/1f19055f-3daa-43f9-a769-72b4b7160c3c" />
 
-## �M��²��
-���M�׬O�M�� 113 �Ǧ~�ץ���U�žǮդu�~����ǥͧ����v�ɹq�����@¾���ĤG���ݨD�Ҷ}�o�� PC �ݱ���{���C
+## 專案簡介
+本專案是專為 113 學年度全國各級學校工業類科學生技藝競賽電腦修護職類第二站需求所開發的 PC 端控制程式。
 
-## �^�츹�X
-**01** (�_�Ʊ^��)
+## 崗位號碼
+**01** (奇數崗位)
 
-## ������T
-- **�ثe����**: v2.2
-- **�̫��s**: 2025-11-20
-- **�}�o�y��**: Visual Basic .NET 2022
-- **�ؼЮج[**: .NET 8.0 Windows Forms
-
----
-
-## �\��S��
-
-###  �w��{�\��
-
-#### P1 - �{���������D�C
-- ��ܧ����ɨƸ�T�P�^�츹�X
-
-#### P2 - �Ť��ҲզW�ٳB�z
-- �۰ʭp���Ť��ҲզW�١G`ODD-01-0001`
-- �ھڱ^�츹�X�P�_�_����
-
-#### P3 - COM Port ���y����
-- �Y�ɰʺA��ܩҦ��i�� COM Port
-- �䴩�����ަ۰ʧ�s�]�C 2 ���ˬd�@���^
-
-#### P4 - COM Port �۰ʳs�u
-- �}�ҧǦC��۰���ܡuConnected�v���A
-- �۰ʵo�e�s�u�r�� 'c' �� Arduino
-
-#### P5 - COM Port ���_�B�z
-- ������ܡuDisconnect�v���A
-- �۰ʰ��ά����\����s
-- �o�e�_�u�r�� 'b' �� Arduino
-
-#### P6 - �s�u���A����
-- �Y����ܳs�u���A�]Connected/Disconnect�^
-- �ϥ��C��Ϥ��]���/����^
-
-#### P7 - CPU Loading �ʱ�
-- �C����s�@�� CPU �ϥβv
-- �۰ʧP�_�C��G
-  - 0~50%�G���
-  - 51~84%�G����
-  - ?85%�G����
-- **�ǿ�榡�G`LOAD�ƭ�\n`**�]²���r�榡�^
-- �P�B��s WS2812 LED ���
-
-#### RAM Loading �ʱ��]�X�R�\��^
-- �C����s�@�� RAM �ϥβv
-- �۰ʧP�_�C��]�P CPU �ۦP�W�h�^
-- �P�B��s WS2812 LED ���
-- **�ǿ�榡�G`LOAD�ƭ�\n`**�]²���r�榡�^
-
-#### P8 - �G�i���J����
-- ���� 4 �줸�G�i���J�榡
-- ���~����ܡuNot BIN Format�v�T��
-- �۰��ഫ���Q�i��
-
-#### P9 - EEPROM �g�J
-- Write ���s�s�ʶǰe�ƾڦ� MCU
-- �ϥΤG�i��ʥ]�榡�]�O�d��榡�^
-
-#### P10 - �{���h�X
-- �w�������Ҧ��s�u�P�귽
-- �M�z�p�ɾ��P�ǦC��
-
-#### P11 - ����T���P�B
-- �Y����ܩҦ��ʱ��ƾ�
-- CPU/RAM Loading �C����s
-- �s�u���A�Y�ɦP�B
-
-#### P12 - WS2812 �O���P�B��� ? �u��
-- ø�s 8 ����� LED �O���]���| 22 �����^
-- �䴩�Y�ɦP�B Arduino WS2812 ���A
-- �ϥα�׺��h�ĪG�e�{�u��P
-- �䴩 RGB 24-bit �C��Ŷ�
-- **CPU/RAM �ʱ��ɦP�B����C��**
-- **����ʱ��ɦ۰ʭ��m���¦�**
-- �_�u�ɿO���۰ʺ���
+## 版本資訊
+- **目前版本**: v2.2
+- **最後更新**: 2025-11-20
+- **開發語言**: Visual Basic .NET 2022
+- **目標框架**: .NET 8.0 Windows Forms
 
 ---
 
-## �t�λݨD
+## 功能特色
 
-### �}�o����
+###  已實現功能
+
+#### P1 - 程式視窗標題列
+- 顯示完整賽事資訊與崗位號碼
+
+#### P2 - 藍牙模組名稱處理
+- 自動計算藍牙模組名稱：`ODD-01-0001`
+- 根據崗位號碼判斷奇偶性
+
+#### P3 - COM Port 掃描偵測
+- 即時動態顯示所有可用 COM Port
+- 支援熱插拔自動更新（每 2 秒檢查一次）
+
+#### P4 - COM Port 自動連線
+- 開啟序列埠自動顯示「Connected」狀態
+- 自動發送連線字元 'c' 給 Arduino
+
+#### P5 - COM Port 中斷處理
+- 關閉顯示「Disconnect」狀態
+- 自動停用相關功能按鈕
+- 發送斷線字元 'b' 給 Arduino
+
+#### P6 - 連線狀態指示
+- 即時顯示連線狀態（Connected/Disconnect）
+- 使用顏色區分（綠色/紅色）
+
+#### P7 - CPU Loading 監控
+- 每秒更新一次 CPU 使用率
+- 自動判斷顏色：
+  - 0~50%：綠色
+  - 51~84%：黃色
+  - ?85%：紅色
+- **傳輸格式：`LOAD數值\n`**（簡單文字格式）
+- 同步更新 WS2812 LED 顯示
+
+#### RAM Loading 監控（擴充功能）
+- 每秒更新一次 RAM 使用率
+- 自動判斷顏色（與 CPU 相同規則）
+- 同步更新 WS2812 LED 顯示
+- **傳輸格式：`LOAD數值\n`**（簡單文字格式）
+
+#### P8 - 二進位輸入驗證
+- 驗證 4 位元二進位輸入格式
+- 錯誤時顯示「Not BIN Format」訊息
+- 自動轉換為十進位
+
+#### P9 - EEPROM 寫入
+- Write 按鈕連動傳送數據至 MCU
+- 使用二進位封包格式（保留原格式）
+
+#### P10 - 程式退出
+- 安全關閉所有連線與資源
+- 清理計時器與序列埠
+
+#### P11 - 全域訊息同步
+- 即時顯示所有監控數據
+- CPU/RAM Loading 每秒更新
+- 連線狀態即時同步
+
+#### P12 - WS2812 燈號同步顯示 ? 優化
+- 繪製 8 顆圓形 LED 燈號（直徑 22 像素）
+- 支援即時同步 Arduino WS2812 狀態
+- 使用梯度漸層效果呈現真實感
+- 支援 RGB 24-bit 顏色空間
+- **CPU/RAM 監控時同步顯示顏色**
+- **停止監控時自動重置為黑色**
+- 斷線時燈號自動熄滅
+
+---
+
+## 系統需求
+
+### 開發環境
 - Visual Studio 2022
 - .NET 8.0 Windows Forms
 - VB.NET
 
-### �M��ۨ�
+### 套件相依
 - System.IO.Ports (v8.0.0)
 - System.Management (v8.0.0)
 
-### �w��ݨD
-- �䴩�Ť��s�u�q���]�� USB ��ǦC��^
-- HC-05 �Ť��Ҳթάۮe�˸m
-- Arduino �}�o�O�]�t�s�� WS2812 LED�^
+### 硬體需求
+- 支援藍牙連線電腦（或 USB 轉序列埠）
+- HC-05 藍牙模組或相容裝置
+- Arduino 開發板（含連接 WS2812 LED）
 
 ---
 
-## �{���[�c
+## 程式架構
 
-### �ɮ׵��c
+### 檔案結構
 
 ```
 114pc-new2/
-�x
-�u�w�w Form1.vb                        # �D�����{��
-�u�w�w Form1.Designer.vb               # UI �]�p
-�x
-�u�w�w Modules/
-�x   �u�w�w SerialPortManager.vb        # �ǦC��޲z
-�x   �u�w�w ComPortWatcher.vb           # COM Port �ʱ�
-�x   �u�w�w CpuLoadProvider.vb          # CPU/RAM �ϥβv�ʱ�
-�x   �u�w�w EepromService.vb            # EEPROM �A��
-�x   �u�w�w BleProtocol.vb              # �Ť��q�T��w
-�x   �u�w�w LedDisplayManager.vb        # LED ��ܺ޲z
-�x   �u�w�w LedSyncService.vb           # LED �P�B�A��
-�x   �|�w�w TitleService.vb             # ���D�A��
-�x
-�u�w�w 114pc-new2.vbproj               # �M����
-�x
-�u�w�w README.md                       # ���ɮ�
-�u�w�w �ϥΤ�U.md                     # �ԲӾާ@����
-�u�w�w �M�ק������i.md                  # �}�o����
-�|�w�w v2.2_�u�Ƨ�s�`��.md             # �̷s��s����
+│
+├── Form1.vb                        # 主視窗程式
+├── Form1.Designer.vb               # UI 設計
+│
+├── Modules/
+│   ├── SerialPortManager.vb        # 序列埠管理
+│   ├── ComPortWatcher.vb           # COM Port 監控
+│   ├── CpuLoadProvider.vb          # CPU/RAM 使用率監控
+│   ├── EepromService.vb            # EEPROM 服務
+│   ├── BleProtocol.vb              # 藍牙通訊協定
+│   ├── LedDisplayManager.vb        # LED 顯示管理
+│   ├── LedSyncService.vb           # LED 同步服務
+│   └── TitleService.vb             # 標題服務
+│
+├── 114pc-new2.vbproj               # 專案檔
+│
+├── README.md                       # 本檔案
+├── 使用手冊.md                     # 詳細操作說明
+├── 專案完成報告.md                  # 開發紀錄
+└── v2.2_優化更新總結.md             # 最新更新說明
 ```
 
 ---
 
-## �q�T��w
+## 通訊協定
 
-### PC �� �� Arduino ��
+### PC 端 → Arduino 端
 
-#### ?? CPU/RAM Loading �ʱ��]v2.2 ²�Ʈ榡�^
+#### ?? CPU/RAM Loading 監控（v2.2 簡化格式）
 ```
-�榡�GLOAD�ƭ�\n
-�d�ҡGLOAD45.2\n�]CPU �ϥβv 45.2%�^
-      LOAD62.8\n�]RAM �ϥβv 62.8%�^
-�s�X�GASCII
-���סG�ܰʡ]�ƭȦ�Ƥ��P�^
+格式：LOAD數值\n
+範例：LOAD45.2\n（CPU 使用率 45.2%）
+      LOAD62.8\n（RAM 使用率 62.8%）
+編碼：ASCII
+長度：變動（數值位數不同）
 ```
 
-**�u�I�G**
-- ? �榡²���Ū
-- ? �i�����b�ǦC��ʵ����[��
-- ? Arduino �ѪR�e��
-- ? �A�X�Y�ɺʱ�����
+**優點：**
+- ? 格式簡單易讀
+- ? 可直接在序列埠監視器觀察
+- ? Arduino 解析容易
+- ? 適合即時監控應用
 
-**Arduino �����d�ҡG**
+**Arduino 接收範例：**
 ```cpp
 if (Serial.available()) {
     String data = Serial.readStringUntil('\n');
     if (data.startsWith("LOAD")) {
         float value = data.substring(4).toFloat();
-        // �B�z�����쪺�ƭ�
+        // 處理接收到的數值
     }
 }
 ```
 
-#### EEPROM �g�J�ʥ]�]�G�i��榡�^
+#### EEPROM 寫入封包（二進位格式）
 ```
 [SOF] [CMD] [LEN] [Data] [CHK] [EOF]
 0xAA  0x20  0x01  value  sum   0x55
 ```
 
-**�榡�����G**
-- SOF: �_�l�r�� (0xAA)
-- CMD: �R�O�X (0x20 = EEPROM)
-- LEN: ��ƪ��� (0x01)
-- Data: ��ƭ� (0-15)
-- CHK: �ˬd�X (sum & 0xFF)
-- EOF: �����r�� (0x55)
+**格式說明：**
+- SOF: 起始字元 (0xAA)
+- CMD: 命令碼 (0x20 = EEPROM)
+- LEN: 資料長度 (0x01)
+- Data: 資料值 (0-15)
+- CHK: 檢查碼 (sum & 0xFF)
+- EOF: 結束字元 (0x55)
 
-#### ����r��
-| �r�� | �\�� | Arduino �ʧ@ |
+#### 控制字元
+| 字元 | 功能 | Arduino 動作 |
 |------|------|-------------|
-| `c` (0x63) | �s�u�T�{ | �^�� ACK |
-| `b` (0x62) | �_�u�q�� | �����Ҧ� LED |
+| `c` (0x63) | 連線確認 | 回應 ACK |
+| `b` (0x62) | 斷線通知 | 熄滅所有 LED |
 
 ---
 
-## �C���Ӫ�
+## 顏色對照表
 
-### CPU/RAM Loading �C��W�h
+### CPU/RAM Loading 顏色規則
 
-| �ϥβv�d�� | �C�� | RGB �� | WS2812 LED ��� |
+| 使用率範圍 | 顏色 | RGB 值 | WS2812 LED 顯示 |
 |-----------|------|--------|----------------|
-| 0% ~ 50% | ?? ��� | (0, 255, 0) | 8 �� LED ���� |
-| 51% ~ 84% | ?? ���� | (255, 255, 0) | 8 �� LED ���� |
-| 85% ~ 100% | ?? ���� | (255, 0, 0) | 8 �� LED ���� |
-| ����/�_�u | ? �¦� | (0, 0, 0) | 8 �� LED ���� |
+| 0% ~ 50% | ?? 綠色 | (0, 255, 0) | 8 顆 LED 全綠 |
+| 51% ~ 84% | ?? 黃色 | (255, 255, 0) | 8 顆 LED 全黃 |
+| 85% ~ 100% | ?? 紅色 | (255, 0, 0) | 8 顆 LED 全紅 |
+| 停止/斷線 | ? 黑色 | (0, 0, 0) | 8 顆 LED 熄滅 |
 
 ---
 
-## �ϥλ���
+## 使用說明
 
-### 1. �s�u�]�w
-1. �Ұʵ{����ACOM Port �M��|�۰ʸ��J
-2. ��ܥ��T�� COM Port�]�Ť��� USB�^
-3. �I���uOpen�v�}�ҳs�u
-4. �s�u���\�᪬�A��ܡuConnected�v
+### 1. 連線設定
+1. 啟動程式後，COM Port 清單會自動載入
+2. 選擇正確的 COM Port（藍牙或 USB）
+3. 點擊「Open」開啟連線
+4. 連線成功後狀態顯示「Connected」
 
-### 2. CPU �ʱ�
-1. �s�u���\��A�uStart�v���s�i��
-2. �I���uStart�v�}�l�ʱ� CPU �ϥβv
-3. �C���۰ʧ�s�ƭȻP�C��
-4. LED �O���P�B��ܷ��e�C��
-5. **�۰ʵo�e `LOAD�ƭ�\n` �榡�� Arduino**
-6. �I���uStop�v����ʱ��ALED �۰ʭ��m���¦�
+### 2. CPU 監控
+1. 連線成功後，「Start」按鈕可用
+2. 點擊「Start」開始監控 CPU 使用率
+3. 每秒自動更新數值與顏色
+4. LED 燈號同步顯示當前顏色
+5. **自動發送 `LOAD數值\n` 格式至 Arduino**
+6. 點擊「Stop」停止監控，LED 自動重置為黑色
 
-### 3. RAM �ʱ�
-1. �I���uStart�v�}�l�ʱ� RAM �ϥβv
-2. �C���۰ʧ�s�ƭ�
-3. LED �O���P�B��ܷ��e�C��
-4. **�۰ʵo�e `LOAD�ƭ�\n` �榡�� Arduino**
-5. �I���uStop�v����ʱ��ALED �۰ʭ��m���¦�
+### 3. RAM 監控
+1. 點擊「Start」開始監控 RAM 使用率
+2. 每秒自動更新數值
+3. LED 燈號同步顯示當前顏色
+4. **自動發送 `LOAD數值\n` 格式至 Arduino**
+5. 點擊「Stop」停止監控，LED 自動重置為黑色
 
-### 4. EEPROM �g�J
-1. �b��J���J 4 �줸�G�i��ƭȡ]�Ҧp�G1010�^
-2. �I���uWrite�v�ǰe
-3. �{���|�۰����Ү榡���ഫ���Q�i��
-4. �ʥ]�ǰe�� Arduino EEPROM
+### 4. EEPROM 寫入
+1. 在輸入欄輸入 4 位元二進位數值（例如：1010）
+2. 點擊「Write」傳送
+3. 程式會自動驗證格式並轉換為十進位
+4. 封包傳送至 Arduino EEPROM
 
-### 5. LED �O���[��
-- 8 ����� LED �۰ʦP�B����C��
-- CPU �� RAM Loading �ʱ��ɡA�Ҧ��O���P�B�ܦ�
-- ����ʱ��ɿO���۰ʺ���
-- �_�u�ɿO���۰ʺ���
+### 5. LED 燈號觀察
+- 8 顆圓形 LED 自動同步顯示顏色
+- CPU 或 RAM Loading 監控時，所有燈號同步變色
+- 停止監控時燈號自動熄滅
+- 斷線時燈號自動熄滅
 
 ---
 
-## �ǦC��]�w
+## 序列埠設定
 
 - **Baud Rate**: 9600 bps
 - **Data Bits**: 8
@@ -245,111 +246,111 @@ if (Serial.available()) {
 
 ---
 
-## �`�N�ƶ�
+## 注意事項
 
-1. **�ǦC��W�e**�G�T�O�{�������e�S����L�{������ COM Port
-2. **�Ť��t��**�G�ϥΫe�Х��t���Ť��Ҳա]�w�] PIN�G1234 �� 0000�^
-3. **�귽����**�G�����{���e�Х����� COM Port
-4. **CPU �ʱ����**�G����Ū�� CPU �ϥβv�i�ण�ǽT
-5. **LED ��s�W�v**�G�C����s�@���]�P CPU �ʱ��P�B�^
-6. **? �q�T�榡**�GCPU/RAM �ϥ� ASCII ��r�榡�AEEPROM �ϥΤG�i��榡
-7. **? LED ���m**�G����ʱ����_�u�ɡALED �|�۰ʭ��m���¦�
-
----
-
-## ���~�B�z
-
-- **COM Port �}�ҥ���**�G�ˬd�O�_�Q��L�{������
-- **Not BIN Format**�G��J�����O 4 �줸�G�i��]0 �M 1�^
-- **�s�u���_**�G�{���|�۰ʰ��ά����\��ç�s���A
-- **? Arduino �L�^��**�G�T�{�w�W�ǥ��T���{���X�A�䴩 `LOAD�ƭ�\n` �榡
+1. **序列埠獨占**：確保程式關閉前沒有其他程式佔用 COM Port
+2. **藍牙配對**：使用前請先配對藍牙模組（預設 PIN：1234 或 0000）
+3. **資源釋放**：關閉程式前請先關閉 COM Port
+4. **CPU 監控精度**：首次讀取 CPU 使用率可能不準確
+5. **LED 更新頻率**：每秒更新一次（同 CPU 監控同步）
+6. **? 通訊格式**：CPU/RAM 使用 ASCII 文字格式，EEPROM 使用二進位格式
+7. **? LED 重置**：停止監控或斷線時，LED 會自動重置為黑色
 
 ---
 
-## ��������
+## 錯誤處理
 
-### �椸���ն���
-1. ? COM Port �����P�}��
-2. ? CPU Loading Ū���P�C��P�_
-3. ? RAM Loading Ū���P�C��P�_
-4. ? �G�i���J����
-5. ? �ʥ]�榡�]ASCII + �G�i��^
-6. ? LED ��ܦP�B
-7. ? LED ����m
-8. ? �s�u���A�޲z
-
-### ��X���ն���
-1. ? PC ? Arduino ���V�q�T
-2. ? WS2812 �O���P�B�]ASCII �榡�^
-3. ? EEPROM �g�J���ҡ]�G�i��榡�^
-4. ? ���`�B�z
+- **COM Port 開啟失敗**：檢查是否被其他程式佔用
+- **Not BIN Format**：輸入必須是 4 位元二進位（0 和 1）
+- **連線中斷**：程式會自動停用相關功能並更新狀態
+- **? Arduino 無回應**：確認已上傳正確的程式碼，支援 `LOAD數值\n` 格式
 
 ---
 
-## �������{
+## 測試驗證
 
-### v2.2�]�̷s�^- 2025-01-XX
-- ?? **²�ƶǿ�榡**�GCPU/RAM ��� `LOAD�ƭ�\n` �榡
-- ??? **���� Color �϶�**�G²�� CPU Loading Monitor UI
-- ? **�W�j RAM �\��**�G�s�W�C��P�_�M LED �P�B
-- ?? **LED �۰ʭ��m**�G����ʱ��ɦ۰ʺ��� LED
-- ?? **UI �u��**�G���������Y�p�� 525px
+### 單元測試項目
+1. ? COM Port 偵測與開啟
+2. ? CPU Loading 讀取與顏色判斷
+3. ? RAM Loading 讀取與顏色判斷
+4. ? 二進位輸入驗證
+5. ? 封包格式（ASCII + 二進位）
+6. ? LED 顯示同步
+7. ? LED 停止重置
+8. ? 連線狀態管理
+
+### 整合測試項目
+1. ? PC ? Arduino 雙向通訊
+2. ? WS2812 燈號同步（ASCII 格式）
+3. ? EEPROM 寫入驗證（二進位格式）
+4. ? 異常處理
+
+---
+
+## 版本歷程
+
+### v2.2（最新）- 2025-01-XX
+- ?? **簡化傳輸格式**：CPU/RAM 改用 `LOAD數值\n` 格式
+- ??? **移除 Color 區塊**：簡化 CPU Loading Monitor UI
+- ? **增強 RAM 功能**：新增顏色判斷和 LED 同步
+- ?? **LED 自動重置**：停止監控時自動熄滅 LED
+- ?? **UI 優化**：視窗高度縮小為 525px
 
 ### v2.1 - 2025-01-XX
-- �䴩 `#COLOR:RRGGBB` ASCII �r��榡
-- �ŦX�v�ɳW��n�D
+- 支援 `#COLOR:RRGGBB` ASCII 字串格式
+- 符合競賽規格要求
 
 ### v2.0
-- �����Ҧ��򥻥\��]P1-P12�^
-- ��{ WS2812 LED �P�B���
+- 完成所有基本功能（P1-P12）
+- 實現 WS2812 LED 同步顯示
 
 ---
 
-## �������
+## 相關文件
 
-- ? `README.md` - ���ɮס]�M���`���^
-- ? `�ϥΤ�U.md` - �ԲӾާ@����
-- ? `�M�ק������i.md` - �}�o����
-- ? `v2.2_�u�Ƨ�s�`��.md` - **�̷s��s����**
-- ? `pc_spec_v3.md` - �\��ݨD�W��
-
----
-
-## ���v�n��
-
-���{���Ȩ��v�ɤαШ|�ϥΡC
+- ? `README.md` - 本檔案（專案總覽）
+- ? `使用手冊.md` - 詳細操作說明
+- ? `專案完成報告.md` - 開發紀錄
+- ? `v2.2_優化更新總結.md` - **最新更新說明**
+- ? `pc_spec_v3.md` - 功能需求規格
 
 ---
 
-## �ֳt�}�l
+## 授權聲明
 
-### ��²�ϥάy�{
+本程式僅供競賽及教育使用。
+
+---
+
+## 快速開始
+
+### 最簡使用流程
 ```
-1. �Ұʵ{��
-   ��
-2. ��� COM Port �� �I�� Open
-   ��
-3. ���ݡuConnected�v���A
-   ��
-4. �I�� CPU �� RAM �� Start ���s
-   ��
-5. �[��ƭȡBLED �C���ܤ�
-   ��
-6. �������I�� Stop �� LED �۰ʺ���
-   ��
-7. �I�� Close �� �I�� Exit
+1. 啟動程式
+   ↓
+2. 選擇 COM Port → 點擊 Open
+   ↓
+3. 等待「Connected」狀態
+   ↓
+4. 點擊 CPU 或 RAM 的 Start 按鈕
+   ↓
+5. 觀察數值、LED 顏色變化
+   ↓
+6. 完成後點擊 Stop → LED 自動熄滅
+   ↓
+7. 點擊 Close → 點擊 Exit
 ```
 
 ---
 
-**�^�츹�X�G01**  
-**�Ť��ҲաGODD-01-0001**  
-**�_�Ʊ^��**  
-**�q�T�榡�GASCII (CPU/RAM) + Binary (EEPROM)**  
-**�����Gv2.2**
+**崗位號碼：01**  
+**藍牙模組：ODD-01-0001**  
+**奇數崗位**  
+**通訊格式：ASCII (CPU/RAM) + Binary (EEPROM)**  
+**版本：v2.2**
 
 ---
 
-*�̫��s�G2025-01-XX*  
-*�}�o���ҡGVisual Studio 2022 + .NET 8.0*  
-*�ؼ��v�ɡG113 �Ǧ~�פu���ɹq�����@¾���ĤG��*
+*最後更新：2025-01-XX*  
+*開發環境：Visual Studio 2022 + .NET 8.0*  
+*目標競賽：113 學年度工科賽電腦修護職類第二站*
