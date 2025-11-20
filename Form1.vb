@@ -147,15 +147,12 @@ Public Class Form1
     ''' 包含連線狀態、數值顯示、顏色指示器等
     ''' </summary>
     Private Sub InitializeUI()
-        ' 設定初始連線狀態為「未連線」
+        ' 設定初始連線狀態為「未連線`
         UpdateConnectionStatus(False)
 
         ' 初始化數值顯示標籤
         lblCpuValue.Text = "0.0%"
         lblRamValue.Text = "0.0%"
-
-        ' 初始化顏色指示器為黑色（關閉狀態）
-        lblCpuColor.BackColor = Color.Black
     End Sub
 
     ' ========================================
@@ -321,7 +318,7 @@ Public Class Form1
 
     ''' <summary>
     ''' CPU 監控停止按鈕點擊事件
-    ''' 停止計時器，暫停 CPU 使用率更新
+    ''' 停止計時器，暫停 CPU 使用率更新，並重置 LED 燈號
     ''' </summary>
     Private Sub btnStopCpu_Click(sender As Object, e As EventArgs) Handles btnStopCpu.Click
         ' 停止 CPU 監控計時器
@@ -330,6 +327,9 @@ Public Class Form1
         ' 切換按鈕啟用狀態
         btnStartCpu.Enabled = True
         btnStopCpu.Enabled = False
+
+        ' 重置 LED 燈號為黑色（關閉狀態）
+        ledSync.ResetLeds()
     End Sub
 
     ''' <summary>
@@ -339,7 +339,7 @@ Public Class Form1
     ''' 2. 判斷對應顏色（綠/黃/紅）
     ''' 3. 更新 UI 顯示
     ''' 4. 同步 LED 燈號顏色
-    ''' 5. 傳送封包至 Arduino
+    ''' 5. 傳送簡單文字格式至 Arduino
     ''' </summary>
     Private Sub timerCpu_Tick(sender As Object, e As EventArgs) Handles timerCpu.Tick
         Try
@@ -354,21 +354,21 @@ Public Class Form1
             ' 規則：0~50% 綠色、51~84% 黃色、≥85% 紅色
             ' ----------------------------------------
             Dim cpuColor As Color = cpuProvider.GetColorForCpuUsage(currentCpuUsage)
-            lblCpuColor.BackColor = cpuColor
 
             ' ----------------------------------------
-            ' 步驟 3：P12 同步更新 LED 顯示
+            ' 步驟 3：同步更新 LED 顯示
             ' 將 8 顆 LED 燈號全部更新為對應顏色
             ' ----------------------------------------
             ledSync.SyncCpuLoadingColor(cpuColor)
 
             ' ----------------------------------------
-            ' 步驟 4：傳送 CPU Loading 封包至 MCU
-            ' 封包格式：[SOF][CMD][LEN][CPU%][R][G][B][CHK][EOF]
+            ' 步驟 4：傳送 CPU Loading 文字格式至 MCU
+            ' 格式：LOAD數值\n（例如：LOAD45.2\n）
             ' ----------------------------------------
             If serialManager.IsConnected Then
-                Dim packet As Byte() = bleProtocol.CreateCpuLoadPacket(CByte(currentCpuUsage), cpuColor)
-                serialManager.SendData(packet)
+                Dim message As String = "LOAD" & currentCpuUsage.ToString("F1") & vbLf
+                Dim data As Byte() = System.Text.Encoding.ASCII.GetBytes(message)
+                serialManager.SendData(data)
             End If
         Catch ex As Exception
             ' 錯誤處理：捕捉並忽略異常，避免程式崩潰
@@ -393,7 +393,7 @@ Public Class Form1
 
     ''' <summary>
     ''' RAM 監控停止按鈕點擊事件
-    ''' 停止計時器，暫停 RAM 使用率更新
+    ''' 停止計時器，暫停 RAM 使用率更新，並重置 LED 燈號
     ''' </summary>
     Private Sub btnStopRam_Click(sender As Object, e As EventArgs) Handles btnStopRam.Click
         ' 停止 RAM 監控計時器
@@ -402,17 +402,45 @@ Public Class Form1
         ' 切換按鈕啟用狀態
         btnStartRam.Enabled = True
         btnStopRam.Enabled = False
+
+        ' 重置 LED 燈號為黑色（關閉狀態）
+        ledSync.ResetLeds()
     End Sub
 
     ''' <summary>
     ''' RAM 監控計時器 Tick 事件（每秒執行一次）
     ''' 取得記憶體使用率並更新 UI 顯示
+    ''' 傳送簡單文字格式至 Arduino
     ''' </summary>
     Private Sub timerRam_Tick(sender As Object, e As EventArgs) Handles timerRam.Tick
         Try
-            ' 取得記憶體使用率（百分比）
+            ' ----------------------------------------
+            ' 步驟 1：取得記憶體使用率（百分比）
+            ' ----------------------------------------
             currentRamUsage = cpuProvider.GetMemoryUsage()
             lblRamValue.Text = currentRamUsage.ToString("F1") & "%"
+
+            ' ----------------------------------------
+            ' 步驟 2：根據使用率判斷對應顏色
+            ' 規則：0~50% 綠色、51~84% 黃色、≥85% 紅色
+            ' ----------------------------------------
+            Dim ramColor As Color = cpuProvider.GetColorForRamUsage(currentRamUsage)
+
+            ' ----------------------------------------
+            ' 步驟 3：同步更新 LED 顯示
+            ' 將 8 顆 LED 燈號全部更新為對應顏色
+            ' ----------------------------------------
+            ledSync.SyncRamLoadingColor(ramColor)
+
+            ' ----------------------------------------
+            ' 步驟 4：傳送 RAM Loading 文字格式至 MCU
+            ' 格式：LOAD數值\n（例如：LOAD62.8\n）
+            ' ----------------------------------------
+            If serialManager.IsConnected Then
+                Dim message As String = "LOAD" & currentRamUsage.ToString("F1") & vbLf
+                Dim data As Byte() = System.Text.Encoding.ASCII.GetBytes(message)
+                serialManager.SendData(data)
+            End If
         Catch ex As Exception
             ' 錯誤處理：捕捉並忽略異常
         End Try

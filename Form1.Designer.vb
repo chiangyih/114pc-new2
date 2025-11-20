@@ -33,11 +33,9 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.grpCpuMonitor = New System.Windows.Forms.GroupBox()
-        Me.lblCpuColor = New System.Windows.Forms.Label()
         Me.lblCpuValue = New System.Windows.Forms.Label()
         Me.btnStopCpu = New System.Windows.Forms.Button()
         Me.btnStartCpu = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.grpRamMonitor = New System.Windows.Forms.GroupBox()
         Me.lblRamValue = New System.Windows.Forms.Label()
@@ -157,27 +155,16 @@ Partial Class Form1
         '
         'grpCpuMonitor
         '
-        Me.grpCpuMonitor.Controls.Add(Me.lblCpuColor)
         Me.grpCpuMonitor.Controls.Add(Me.lblCpuValue)
         Me.grpCpuMonitor.Controls.Add(Me.btnStopCpu)
         Me.grpCpuMonitor.Controls.Add(Me.btnStartCpu)
-        Me.grpCpuMonitor.Controls.Add(Me.Label4)
         Me.grpCpuMonitor.Controls.Add(Me.Label3)
         Me.grpCpuMonitor.Location = New System.Drawing.Point(12, 200)
         Me.grpCpuMonitor.Name = "grpCpuMonitor"
-        Me.grpCpuMonitor.Size = New System.Drawing.Size(380, 120)
+        Me.grpCpuMonitor.Size = New System.Drawing.Size(380, 100)
         Me.grpCpuMonitor.TabIndex = 1
         Me.grpCpuMonitor.TabStop = False
         Me.grpCpuMonitor.Text = "CPU Loading Monitor"
-        '
-        'lblCpuColor
-        '
-        Me.lblCpuColor.BackColor = System.Drawing.Color.Black
-        Me.lblCpuColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblCpuColor.Location = New System.Drawing.Point(280, 55)
-        Me.lblCpuColor.Name = "lblCpuColor"
-        Me.lblCpuColor.Size = New System.Drawing.Size(80, 30)
-        Me.lblCpuColor.TabIndex = 5
         '
         'lblCpuValue
         '
@@ -192,7 +179,7 @@ Partial Class Form1
         'btnStopCpu
         '
         Me.btnStopCpu.Enabled = False
-        Me.btnStopCpu.Location = New System.Drawing.Point(200, 70)
+        Me.btnStopCpu.Location = New System.Drawing.Point(200, 55)
         Me.btnStopCpu.Name = "btnStopCpu"
         Me.btnStopCpu.Size = New System.Drawing.Size(70, 30)
         Me.btnStopCpu.TabIndex = 3
@@ -202,21 +189,12 @@ Partial Class Form1
         'btnStartCpu
         '
         Me.btnStartCpu.Enabled = False
-        Me.btnStartCpu.Location = New System.Drawing.Point(120, 70)
+        Me.btnStartCpu.Location = New System.Drawing.Point(120, 55)
         Me.btnStartCpu.Name = "btnStartCpu"
         Me.btnStartCpu.Size = New System.Drawing.Size(70, 30)
         Me.btnStartCpu.TabIndex = 2
         Me.btnStartCpu.Text = "Start"
         Me.btnStartCpu.UseVisualStyleBackColor = True
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(280, 30)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(39, 15)
-        Me.Label4.TabIndex = 1
-        Me.Label4.Text = "Color:"
         '
         'Label3
         '
@@ -233,7 +211,7 @@ Partial Class Form1
         Me.grpRamMonitor.Controls.Add(Me.btnStopRam)
         Me.grpRamMonitor.Controls.Add(Me.btnStartRam)
         Me.grpRamMonitor.Controls.Add(Me.Label6)
-        Me.grpRamMonitor.Location = New System.Drawing.Point(12, 330)
+        Me.grpRamMonitor.Location = New System.Drawing.Point(12, 310)
         Me.grpRamMonitor.Name = "grpRamMonitor"
         Me.grpRamMonitor.Size = New System.Drawing.Size(380, 100)
         Me.grpRamMonitor.TabIndex = 2
@@ -284,7 +262,7 @@ Partial Class Form1
         Me.grpEeprom.Controls.Add(Me.txtBinaryInput)
         Me.grpEeprom.Controls.Add(Me.btnWrite)
         Me.grpEeprom.Controls.Add(Me.Label7)
-        Me.grpEeprom.Location = New System.Drawing.Point(12, 440)
+        Me.grpEeprom.Location = New System.Drawing.Point(12, 420)
         Me.grpEeprom.Name = "grpEeprom"
         Me.grpEeprom.Size = New System.Drawing.Size(380, 90)
         Me.grpEeprom.TabIndex = 3
@@ -348,7 +326,7 @@ Partial Class Form1
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(700, 500)
+        Me.btnExit.Location = New System.Drawing.Point(700, 480)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(90, 30)
         Me.btnExit.TabIndex = 5
@@ -371,7 +349,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(810, 545)
+        Me.ClientSize = New System.Drawing.Size(810, 525)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.grpLedDisplay)
         Me.Controls.Add(Me.grpEeprom)
@@ -407,11 +385,9 @@ Partial Class Form1
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents grpCpuMonitor As GroupBox
-    Friend WithEvents lblCpuColor As Label
     Friend WithEvents lblCpuValue As Label
     Friend WithEvents btnStopCpu As Button
     Friend WithEvents btnStartCpu As Button
-    Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents grpRamMonitor As GroupBox
     Friend WithEvents lblRamValue As Label

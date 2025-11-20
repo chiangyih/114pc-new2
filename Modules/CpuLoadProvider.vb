@@ -50,6 +50,20 @@ Public Class CpuLoadProvider
         End If
     End Function
 
+    ''' <summary>
+    ''' 根據 RAM 使用率判斷對應顏色
+    ''' 規則：0~50% 綠色、51~84% 黃色、?85% 紅色
+    ''' </summary>
+    Public Function GetColorForRamUsage(usage As Single) As Color
+        If usage >= 85 Then
+            Return Color.Red ' ?85% 紅色
+        ElseIf usage >= 51 Then
+            Return Color.Yellow ' 51~84% 黃色
+        Else
+            Return Color.Lime ' 0~50% 綠色
+        End If
+    End Function
+
     Public Sub Dispose()
         If cpuCounter IsNot Nothing Then
             cpuCounter.Dispose()

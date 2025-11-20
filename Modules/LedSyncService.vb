@@ -23,8 +23,26 @@ Public Class LedSyncService
         End Try
     End Sub
 
+    ''' <summary>
+    ''' 同步 CPU Loading 顏色到所有 LED
+    ''' </summary>
     Public Sub SyncCpuLoadingColor(color As Color)
-        ' 當 CPU Loading 改變時，同步更新所有燈號
+        ' 當 CPU Loading 顯示時，同步更新所有燈號
         ledDisplay.UpdateAllLeds(color)
+    End Sub
+
+    ''' <summary>
+    ''' 同步 RAM Loading 顏色到所有 LED
+    ''' </summary>
+    Public Sub SyncRamLoadingColor(color As Color)
+        ' 當 RAM Loading 顯示時，同步更新所有燈號
+        ledDisplay.UpdateAllLeds(color)
+    End Sub
+
+    ''' <summary>
+    ''' 重置所有 LED 為黑色（關閉狀態）
+    ''' </summary>
+    Public Sub ResetLeds()
+        ledDisplay.TurnOffAllLeds()
     End Sub
 End Class
